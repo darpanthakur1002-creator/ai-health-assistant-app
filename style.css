@@ -5,10 +5,15 @@
     box-sizing:border-box;
     font-family:Arial, sans-serif;
 }
+let calories = 1200;
 
+function addCalories() {
+    calories += 50;
+    document.getElementById("calories").innerHTML = calories + " Burned";
+}
 /* Body */
 body{
-    background:#d4c9a6;
+    background:#f5edc2;
 }
 
 /* Main Container */
@@ -20,8 +25,8 @@ body{
 /* Sidebar */
 .sidebar{
     width:250px;
-    background:#72a992;
-    color:white;
+    background:#63a489;
+    color:rgb(18, 10, 10);
     padding:20px;
 }
 
@@ -50,10 +55,10 @@ body{
 
 /* Individual Card */
 .card{
-    background: rgb(219, 232, 236);
+    background: rgb(128, 176, 132);
     padding:20px;
     border-radius:20px;
-    box-shadow:0 3px 20px rgba(0,0,0,.1);
+    box-shadow:0 3px 20px rgba(193, 174, 174, 0.1);
 
     display:flex;
     flex-direction:column;
@@ -64,8 +69,8 @@ body{
     padding:10px 20px;
     border:none;
     border-radius:8px;
-    background:#10b981;
-    color:white;
+    background:#659586;
+    color:rgb(163, 153, 153);
 }
 
 /* Inputs */
@@ -80,21 +85,47 @@ input{
     padding:10px 20px;
     border:none;
     border-radius:8px;
-    background:#10b981;
-    color:white;
+    background:#47c04d;
+    color:rgb(8, 0, 0);
     cursor:pointer;
 }
 
 /* Hover Effects */
 .card button:hover{
-    background:#0ea371;
+    background:#6cc8dc;
 }
 
 .sidebar button:hover{
-    background:#f0f0f0;
+    background:#74aac2;
 }
 .step-box{
     text-align:center;
     margin:20px 0;
 }
+.ai-health{
+    background:#b6d4b7;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
 
+.score-box{
+    text-align:center;
+    padding:20px;
+    background:#15bb4d;
+    color:rgb(169, 243, 186);
+    border-radius:15px;
+    margin:15px 0;
+}
+
+.score-box h1{
+    font-size:60px;
+}
+
+.tips ul{
+    padding-left:20px;
+}
+
+.tips li{
+    margin:10px 0;
+}

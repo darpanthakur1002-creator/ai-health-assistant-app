@@ -5,7 +5,14 @@ function addWater(){
     document.getElementById("water").innerText =
     waterCount + " Glasses";
 }
-
+setInterval(() => {
+    document.getElementById("clock").textContent =
+        new Date().toLocaleTimeString();
+}, 1000);
+function setMood(mood) {
+    document.getElementById("moodDisplay").textContent =
+        "Current Mood: " + mood;
+}
 function calculateBMI(){
 
     let weight =
@@ -19,4 +26,7 @@ function calculateBMI(){
 
     document.getElementById("result").innerHTML =
     "BMI: " + bmi.toFixed(2);
+}
+const today = new Date().toLocaleDateString();
+document.getElementById("date").textContent = today;
 }

@@ -1,188 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HealthMate - Health Assistant</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-body{
-    background:#f4f6f9;
-    padding:20px;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-}
-
-h1{
-    text-align:center;
-    color:#2c3e50;
-    margin-bottom:20px;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-input, button{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    border-radius:5px;
-    border:1px solid #ccc;
-}
-
-button{
-    background:#3498db;
-    color:white;
-    border:none;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#2980b9;
-}
-
-#result{
-    margin-top:10px;
-    font-weight:bold;
-}
-
-ul{
-    margin-top:10px;
-}
-
-li{
-    padding:8px;
-    background:#ecf0f1;
-    margin-top:5px;
-    border-radius:5px;
-}
-
-.dark-mode{
-    background:#1e1e1e;
-    color:white;
-}
-
-.dark-mode .card{
-    background:#2c2c2c;
-    color:white;
-}
-</style>
-</head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Health Hub</title>
+  <link rel="stylesheet" href="style.css">   
+</head>    
+</html>
 <body>
 
-<div class="container">
+ <div class="container">
+  <div class="sidebar">
+  <h2>🏥 Health Hub</h2>
+  <button>Profile</button>
+  <button>Dashboard</button>
+  <button>Heart Rate</button>
+  <button>Medicine</button>
+  <button>Sleep</button>
 
-<h1>🏥 HealthMate Assistant</h1>
+ </div>
 
-<div class="card">
-<h2>User Profile</h2>
-<input type="text" id="name" placeholder="Enter Your Name">
-<button onclick="saveProfile()">Save Profile</button>
-<p id="profile"></p>
+ <div class="main">
+     <h1>Hello Darpan 👋</h1>
+    <h3>📅 12/6/26 & 11am</h3>
+    <p id="datetime"></p>
+    
+
+<div class="cards">
+
+    <!-- Calories Card -->
+    <div class="card">
+        <h3>🔥 Calories Burned</h3>
+        <p>Daily Goal = 1800</p>
+        <h1 id="calories">1200 Burned</h1>
+        <button onclick="addCalories()">Burn 50 Calories</button>
+    </div>
+
+    <!-- BMI Card -->
+    <div class="card">
+        <h3>📊 BMI Calculator</h3>
+
+        <input type="number" id="weight" placeholder="Weight (kg)">
+        <input type="number" id="height" placeholder="Height (cm)">
+
+        <button onclick="calculateBMI()">Calculate</button>
+
+        <p id="result"></p>
+    </div>
+
+    <!-- Medicine Reminder -->
+    <div class="card medicine-card">
+        <h2>💊 Medicine Reminder</h2>
+
+        <input type="text" id="medicineName" placeholder="Medicine Name">
+        <input type="time" id="medicineTime">
+
+        <button onclick="addMedicine()">➕ Add Reminder</button>
+
+        <ul id="medicineList"></ul>
+    </div>
+
+    <!-- Water Tracker -->
+    <div class="card">
+        <h2>💧 Water Intake Tracker</h2>
+
+        <p id="waterCount">Water Taken: 3 Liters</p>
+        <p>Daily Goal: 5 Liters</p>
+
+        <button onclick="addWater()">Drink Water</button>
+    </div>
+ <div class="card ai-health">
+    <h2>🤖 AI Health Assistant</h2>
+    
+    <div class="score-box">
+        <h1>92%</h1>
+        <p>Excellent Health Status</p>
+    </div>
+
+    
 </div>
+      <!-- Mood Tracker -->
+    <div class="card">
+        <h2>😊 Mood Tracker</h2>
 
-<div class="widget">
-    <h3>❤️ Heart Rate</h3>
-    <h1>98 BPM</h1>
-    <p>Normal Range</p>
+        <button onclick="setMood('😀')">😀</button>
+        <button onclick="setMood('😐')">😐</button>
+        <button onclick="setMood('😔')">😔</button>
+
+        <p id="moodDisplay">Current Mood: happy</p>
+    </div>
+    <div class=" card ai-coach">
+    <h2>🧠 AI Wellness Coach</h2>
+
+    <div class="status">
+        <h1>85%</h1>
+        <p>Wellness Score</p>
+    </div>
+
+    <div class="insight">
+        <h3>Today's Insight</h3>
+        <p>Your sleep quality improved by 12% compared to yesterday.</p>
+    </div>
+
+    
+
+    <button>View Full Report</button>
 </div>
-<div class="card">
-<h2>BMI Calculator</h2>
-<input type="number" id="weight" placeholder="Weight (kg)">
-<input type="number" id="height" placeholder="Height (cm)">
-<button onclick="calculateBMI()">Calculate BMI</button>
-<p id="result"></p>
+    <!-- Progress Bar -->
+     <div class="card">
+   <div class="health-goals">
+    <h2>🎯 Daily Health Goals</h2>
+
+    <div class="goal">
+        <span>🚶 run 10,000 Steps </span>
+        <progress value="6500" max="10000"></progress>
+    </div>
+
+    <div class="goal">
+        <span>take 100 gram of protien</span>
+        <progress value="45" max="100"></progress>
+    </div>
+    <div class="goal">
+        <span>😴 Sleep 8 Hours</span>
+        <progress value="7" max="8"></progress>
+    </div>
+
+    <div class="goal">
+        <span>🏃 Exercise 60 Minutes</span>
+        <progress value="45" max="60"></progress>
+    
+        
+
+    <div
+  
 </div>
+    
+       
 
-<div class="card">
-<h2>💊 Medicine Reminder</h2>
-<input type="text" id="medicine" placeholder="Medicine Name">
-<button onclick="addMedicine()">Add Medicine</button>
-<ul id="medicineList"></ul>
-</div>
-
-<div class="card">
-<h2>💧 Water Intake Tracker</h2>
-<button onclick="addWater()">Drink Water</button>
-<p id="waterCount">Glasses Today: 0</p>
-</div>
-
-<div class="card">
-<h2>🌙 Dark Mode</h2>
-<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-</div>
-
-</div>
-
-<script>
-
-let water = 0;
-
-function saveProfile(){
-    let name = document.getElementById("name").value;
-    document.getElementById("profile").innerHTML =
-    "Welcome, " + name + "!";
-}
-
-function calculateBMI(){
-    let weight = document.getElementById("weight").value;
-    let height = document.getElementById("height").value / 100;
-
-    let bmi = weight / (height * height);
-
-    document.getElementById("result").innerHTML =
-    "Your BMI: " + bmi.toFixed(2);
-}
-
-function addMedicine(){
-    let medicine = document.getElementById("medicine").value;
-
-    if(medicine !== ""){
-        let li = document.createElement("li");
-        li.textContent = medicine;
-        document.getElementById("medicineList").appendChild(li);
-        document.getElementById("medicine").value = "";
-    }
-}
-
-function addWater(){
-    water++;
-    document.getElementById("waterCount").innerHTML =
-    "Glasses Today: " + water;
-}
-
-function toggleDarkMode(){
-    document.body.classList.toggle("dark-mode");
-}
-
-</script>
-<select onchange="changeBg(this.value)">
-    <option value="#f4f6f9">Default</option>
-    <option value="#3498db">Blue</option>
-    <option value="#2ecc71">Green</option>
-    <option value="#e74c3c">Red</option>
-    <option value="#121212">Dark</option>
-</select>
-
-<script>
-function changeBg(color){
-    document.body.style.background = color;
-}
-</script>
-</body>
-</html>
+   
