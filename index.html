@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthMate - Health Assistant</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+input, button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+button{
+    background:#3498db;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+
+#result{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+ul{
+    margin-top:10px;
+}
+
+li{
+    padding:8px;
+    background:#ecf0f1;
+    margin-top:5px;
+    border-radius:5px;
+}
+
+.dark-mode{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#2c2c2c;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>🏥 HealthMate Assistant</h1>
+
+<div class="card">
+<h2>User Profile</h2>
+<input type="text" id="name" placeholder="Enter Your Name">
+<button onclick="saveProfile()">Save Profile</button>
+<p id="profile"></p>
+</div>
+
+<div class="widget">
+    <h3>❤️ Heart Rate</h3>
+    <h1>98 BPM</h1>
+    <p>Normal Range</p>
+</div>
+<div class="card">
+<h2>BMI Calculator</h2>
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (cm)">
+<button onclick="calculateBMI()">Calculate BMI</button>
+<p id="result"></p>
+</div>
+
+<div class="card">
+<h2>💊 Medicine Reminder</h2>
+<input type="text" id="medicine" placeholder="Medicine Name">
+<button onclick="addMedicine()">Add Medicine</button>
+<ul id="medicineList"></ul>
+</div>
+
+<div class="card">
+<h2>💧 Water Intake Tracker</h2>
+<button onclick="addWater()">Drink Water</button>
+<p id="waterCount">Glasses Today: 0</p>
+</div>
+
+<div class="card">
+<h2>🌙 Dark Mode</h2>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+</div>
+
+</div>
+
+<script>
+
+let water = 0;
+
+function saveProfile(){
+    let name = document.getElementById("name").value;
+    document.getElementById("profile").innerHTML =
+    "Welcome, " + name + "!";
+}
+
+function calculateBMI(){
+    let weight = document.getElementById("weight").value;
+    let height = document.getElementById("height").value / 100;
+
+    let bmi = weight / (height * height);
+
+    document.getElementById("result").innerHTML =
+    "Your BMI: " + bmi.toFixed(2);
+}
+
+function addMedicine(){
+    let medicine = document.getElementById("medicine").value;
+
+    if(medicine !== ""){
+        let li = document.createElement("li");
+        li.textContent = medicine;
+        document.getElementById("medicineList").appendChild(li);
+        document.getElementById("medicine").value = "";
+    }
+}
+
+function addWater(){
+    water++;
+    document.getElementById("waterCount").innerHTML =
+    "Glasses Today: " + water;
+}
+
+function toggleDarkMode(){
+    document.body.classList.toggle("dark-mode");
+}
+
+</script>
+<select onchange="changeBg(this.value)">
+    <option value="#f4f6f9">Default</option>
+    <option value="#3498db">Blue</option>
+    <option value="#2ecc71">Green</option>
+    <option value="#e74c3c">Red</option>
+    <option value="#121212">Dark</option>
+</select>
+
+<script>
+function changeBg(color){
+    document.body.style.background = color;
+}
+</script>
+</body>
+</html>
